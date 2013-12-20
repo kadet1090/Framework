@@ -9,16 +9,17 @@
 
 namespace PipeCMS\System\Router;
 
-interface Router
+interface RouterInterface
 {
     /**
-     * Turns request string into array.
+     * Turn request string into array.
      * @param string $string Request string to dispatch.
      * @return Request Request data.
      */
     public function dispatch($string);
 
     /**
+     * Add new route
      * @param string $name Route name.
      * @param array $route Route data. <p>
      * array(
@@ -28,12 +29,25 @@ interface Router
      *          'third'  => '0x[0-9A-Fa-f]+',
      *      ),
      *      'optional' => array(
-     *          'fourth' => 'string'
-     *      )
+     *          'fourth' => 'string',
+     *          array(
+     *              'fifth' => 'string',
+     *              'sixth' => 'int'
+     *          ),
+     *      ),
+     *      'parent' => 'parent route',
      * )
      * </p>
      *
      * @return void
      */
     public function addRoute($name, array $route);
+
+    /**
+     * Check if request matches specified route.
+     * @param string $route Route to match.
+     * @param string $request Request string.
+     * @return bool If true $request matches given route, else false.
+     */
+    public function match($route, $request);
 }

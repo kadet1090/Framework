@@ -53,7 +53,7 @@ class Request implements \ArrayAccess
      */
     public function offsetGet($offset)
     {
-        if (!isset($this[$offset])) return null;
+        if (!isset($this->_parameters[$offset])) return null;
 
     }
 

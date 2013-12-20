@@ -9,7 +9,6 @@
 
 namespace PipeCMS\System\AutoLoader;
 
-
 class AutoLoader
 {
     /**
@@ -34,6 +33,7 @@ class AutoLoader
      */
     static protected function _unregister(AutoLoader $loader)
     {
+        spl_autoload_unregister(array($loader, 'unload'));
     }
 
     private $namespace = '';
