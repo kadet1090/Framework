@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace PipeCMS\System\AutoLoader;
+namespace Framework\AutoLoader;
 
 class AutoLoader
 {

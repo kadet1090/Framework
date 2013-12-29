@@ -7,10 +7,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace PipeCMS\System\Router;
+namespace Framework\Router;
 
+use Framework\Data\Request;
 
-class Request implements \ArrayAccess
+class HttpRequest extends Request
 {
     protected $_parameters;
 
@@ -55,38 +56,5 @@ class Request implements \ArrayAccess
     {
         if (!isset($this->_parameters[$offset])) return null;
 
-    }
-
-    /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Offset to set
-     * @link http://php.net/manual/en/arrayaccess.offsetset.php
-     * @param mixed $offset <p>
-     * The offset to assign the value to.
-     * </p>
-     * @param mixed $value <p>
-     * The value to set.
-     * </p>
-     * @throws \Exception
-     * @return void
-     */
-    public function offsetSet($offset, $value)
-    {
-        throw new \Exception('Illegal operation: can\'t change request parameters');
-    }
-
-    /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Offset to unset
-     * @link http://php.net/manual/en/arrayaccess.offsetunset.php
-     * @param mixed $offset <p>
-     * The offset to unset.
-     * </p>
-     * @throws \Exception
-     * @return void
-     */
-    public function offsetUnset($offset)
-    {
-        throw new \Exception('Illegal operation: can\'t unset request parameters');
     }
 }

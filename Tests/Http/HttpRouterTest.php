@@ -1,7 +1,7 @@
 <?php
-require_once '../System/Router/RouterInterface.php';
-require_once '../System/Exceptions/RoutingException.php';
-require_once '../System/Router/HttpRouter.php';
+require_once '../../Framework/Interfaces/RouterInterface.php';
+require_once '../../Framework/Exceptions/RoutingException.php';
+require_once '../../Framework/Http/HttpRouter.php';
 
 class HttpRouterTest extends PHPUnit_Framework_TestCase
 {
@@ -9,7 +9,7 @@ class HttpRouterTest extends PHPUnit_Framework_TestCase
 
     public function __construct()
     {
-        $this->_router = new \PipeCMS\System\Router\HttpRouter();
+        $this->_router = new \Framework\Router\HttpRouter();
     }
 
     public function testSimpleRoute()
@@ -41,16 +41,6 @@ class HttpRouterTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->_router->match('complex', 'controller/action/10'));
         $this->assertTrue($this->_router->match('complex', 'controller/action'));
         $this->assertFalse($this->_router->match('complex', 'controller/action/abc'));
-    }
-
-    public function testDependencyWithWrongParent()
-    {
-        $this->_router->addRoute('depended', array(
-            'optional' => array(
-                'param1' => 'int'
-            ),
-            'parent' => 'simple',
-        ));
     }
 
     /**

@@ -7,19 +7,21 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace PipeCMS\System\Router;
+namespace Framework\Interfaces;
+
+use Framework\Data\Request;
 
 interface RouterInterface
 {
     /**
-     * Turn request string into array.
+     * Turns request string into array.
      * @param string $string Request string to dispatch.
      * @return Request Request data.
      */
     public function dispatch($string);
 
     /**
-     * Add new route
+     * Adds new route
      * @param string $name Route name.
      * @param array $route Route data. <p>
      * array(
@@ -44,10 +46,10 @@ interface RouterInterface
     public function addRoute($name, array $route);
 
     /**
-     * Check if request matches specified route.
+     * Checks if request matches specified route.
      * @param string $route Route to match.
      * @param string $request Request string.
-     * @return bool If true $request matches given route, else false.
+     * @return bool True if $request matches given route, otherwise false.
      */
     public function match($route, $request);
 }

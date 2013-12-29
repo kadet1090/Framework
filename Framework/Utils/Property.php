@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace PipeCMS\System\Utils;
+namespace Framework\System\Utils;
 
 trait Property
 {

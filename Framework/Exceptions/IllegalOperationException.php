@@ -7,8 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace PipeCMS\System\Exceptions;
+namespace Framework\Exceptions;
 
-class RoutingException extends \Exception
+class IllegalOperationException extends \Exception
 {
 }

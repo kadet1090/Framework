@@ -7,9 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace PipeCMS\System\Router;
+namespace Framework\Router;
 
-use PipeCMS\System\Exceptions\RoutingException;
+use Framework\Exceptions\RoutingException;
+use Framework\Interfaces\RouterInterface;
 
 class HttpRouter implements RouterInterface
 {
@@ -36,7 +37,7 @@ class HttpRouter implements RouterInterface
     /**
      * Turn request string into Request.
      * @param string $string Request string to dispatch.
-     * @return Request Request data.
+     * @return HttpRequest Request data.
      */
     public function dispatch($string)
     {
