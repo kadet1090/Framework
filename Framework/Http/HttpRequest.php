@@ -17,11 +17,11 @@ class HttpRequest extends Request
 
     public function __get($name)
     {
-        if (!isset($this->_input[$name])) {
+        if (!isset($this->_parameters[$name])) {
             return null;
         }
 
-        return $this->_input[$name];
+        return $this->_parameters[$name];
     }
 
     /**
@@ -58,8 +58,11 @@ class HttpRequest extends Request
      */
     public function offsetGet($offset)
     {
-        if (!isset($this->_parameters[$offset])) {
+        if (!isset($this->_parameters[(int)$offset])) {
             return null;
+        } else {
+            return $this->_parameters[(int)$offset];
         }
+
     }
 }

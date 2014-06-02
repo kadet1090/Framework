@@ -43,8 +43,19 @@ class HttpRouter implements RouterInterface
 
         foreach ($this->_routes as $route) {
             preg_match($route['regex'], $string, $matches);
-            $parameters = array_merge($parameters, $matches);
+
+            $parameters = array_merge(
+                $parameters,
+                array_filter_keys(
+                    $matches,
+                    function ($key) {
+                        return !is_int($key);
+                    }
+                )
+            );
         }
+
+        $parameters = array_merge($parameters, explode('/', $string));
 
         return new HttpRequest($parameters, $input);
     }
@@ -52,24 +63,24 @@ class HttpRouter implements RouterInterface
     /**
      * Add new route
      *
-     * @param string $name  Route name.
-     * @param array  $route Route data. <p>
-     *                      [
-     *                      'parameters' => [
-     *                      'first'  => 'string',
-     *                      'second' => 'int',
-     *                      'third'  => '0x[0-9A-Fa-f]+',
-     *                      ],
-     *                      'optional' => [
-     *                      'fourth' => 'string',
-     *                      [
-     *                      'fifth' => 'string',
-     *                      'sixth' => 'int'
-     *                      ],
-     *                      ],
-     *                      'parent' => 'parent route',
-     *                      ]
-     *                      </p>
+     * @param string $name              Route name.
+     * @param array  $route             Route data. <p>
+     *                                  [
+     *                                  'parameters' => [
+     *                                  'first'  => 'string',
+     *                                  'second' => 'int',
+     *                                  'third'  => '0x[0-9A-Fa-f]+',
+     *                                  ],
+     *                                  'optional' => [
+     *                                  'fourth' => 'string',
+     *                                  [
+     *                                  'fifth' => 'string',
+     *                                  'sixth' => 'int'
+     *                                  ],
+     *                                  ],
+     *                                  'parent' => 'parent route',
+     *                                  ]
+     *                                  </p>
      *
      * @throws RoutingException
      * @return void

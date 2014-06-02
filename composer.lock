@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0f0c247ec91f1c73e33b5e36a877368d",
+    "hash": "25d0745c2e98f9ea2330489eedb897ea",
     "packages": [
         {
             "name": "kadet/utils",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kadet1090/Utils.git",
-                "reference": "9fc84366feebee6d4615da4b8cd6e2c8abbdef8c"
+                "reference": "8c5bf9c0c9a3e4b92b7eb12b08b4a160d4192dab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kadet1090/Utils/zipball/9fc84366feebee6d4615da4b8cd6e2c8abbdef8c",
-                "reference": "9fc84366feebee6d4615da4b8cd6e2c8abbdef8c",
+                "url": "https://api.github.com/repos/kadet1090/Utils/zipball/8c5bf9c0c9a3e4b92b7eb12b08b4a160d4192dab",
+                "reference": "8c5bf9c0c9a3e4b92b7eb12b08b4a160d4192dab",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "utilities",
                 "utils"
             ],
-            "time": "2014-05-13 21:34:49"
+            "time": "2014-06-02 19:50:29"
         }
     ],
     "packages-dev": [
