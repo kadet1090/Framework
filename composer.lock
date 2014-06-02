@@ -1,0 +1,74 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "0f0c247ec91f1c73e33b5e36a877368d",
+    "packages": [
+        {
+            "name": "kadet/utils",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kadet1090/Utils.git",
+                "reference": "9fc84366feebee6d4615da4b8cd6e2c8abbdef8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kadet1090/Utils/zipball/9fc84366feebee6d4615da4b8cd6e2c8abbdef8c",
+                "reference": "9fc84366feebee6d4615da4b8cd6e2c8abbdef8c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kadet\\Utils\\": "."
+                },
+                "files": [
+                    "functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Kacper \"Kadet\" Donat",
+                    "email": "kadet1090@gmail.com",
+                    "homepage": "http://kadet.pipe-software.xaa.pl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Some utilities like Events, Properties, Timer for PHP (especially CLI)",
+            "homepage": "https://github.com/kadet1090/Utils",
+            "keywords": [
+                "event",
+                "properties",
+                "timer",
+                "utilities",
+                "utils"
+            ],
+            "time": "2014-05-13 21:34:49"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
