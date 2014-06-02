@@ -2,11 +2,13 @@
 
 namespace Framework\System\Utils;
 
+use ReflectionClass;
+
 trait Property
 {
     public function __get($name)
     {
-        $reflection = new \ReflectionClass(get_called_class());
+        $reflection = new ReflectionClass(get_called_class());
         try {
             $getter = '_get_' . $name;
             $method = $reflection->getMethod($getter);
@@ -22,7 +24,7 @@ trait Property
 
     public function __set($name, $value)
     {
-        $reflection = new \ReflectionClass(get_called_class());
+        $reflection = new ReflectionClass(get_called_class());
 
         try {
             $setter = '_set_' . $name;

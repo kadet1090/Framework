@@ -7,7 +7,7 @@ class AutoLoader
     /**
      * @var AutoLoader[]
      */
-    static protected $_loaders = array();
+    static protected $_loaders = [];
 
     /**
      * Registers new AutoLoader
@@ -16,7 +16,7 @@ class AutoLoader
      */
     static protected function _register(AutoLoader $loader)
     {
-        spl_autoload_register(array($loader, 'load'));
+        spl_autoload_register([$loader, 'load']);
     }
 
     /**
@@ -26,7 +26,7 @@ class AutoLoader
      */
     static protected function _unregister(AutoLoader $loader)
     {
-        spl_autoload_unregister(array($loader, 'unload'));
+        spl_autoload_unregister([$loader, 'unload']);
     }
 
     private $namespace = '';
