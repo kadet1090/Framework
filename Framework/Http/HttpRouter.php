@@ -29,6 +29,17 @@ class HttpRouter implements RouterInterface
      */
     public $extension = '(:?\.php)?';
 
+    public function __construct($config = null)
+    {
+        if ($config != null) {
+            foreach ($config as $name => $route) {
+                if (is_array($route)) {
+                    $this->addRoute($name, $route);
+                }
+            }
+        }
+    }
+
     /**
      * Turn request string into Request.
      *

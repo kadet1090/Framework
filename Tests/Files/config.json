@@ -1,0 +1,20 @@
+{
+	"router": {
+		"simple": {
+			"parameters": {
+				"controller": "string",
+				"action": "string"
+			}
+		},
+		"complex": {
+			"parameters": {
+				"controller": "string",
+				"action": "string"
+			},
+			"optional": {
+				"param1": "int"
+			}
+		}
+	},
+	"defaultRequest": "site/index"
+}

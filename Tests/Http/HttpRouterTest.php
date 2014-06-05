@@ -1,4 +1,5 @@
 <?php
+
 class HttpRouterTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -8,7 +9,7 @@ class HttpRouterTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_router = new \Framework\Http\HttpRouter();
+        $this->_router = new \Framework\Http\HttpRouter(null);
     }
 
     public function testSimpleRoute()

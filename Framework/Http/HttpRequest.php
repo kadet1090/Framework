@@ -4,8 +4,10 @@ namespace Framework\Http;
 
 use Framework\Data\Request;
 
-class HttpRequest extends Request
+class HttpRequest extends \Framework\Data\Request
 {
+
+
     protected $_parameters;
     protected $_input;
 
