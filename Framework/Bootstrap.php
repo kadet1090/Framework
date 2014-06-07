@@ -38,8 +38,6 @@ class Bootstrap
 
     public function callController($controller)
     {
-        $controller = '\Application\Controller\\' . $controller;
-
         if (!is_callable($controller)) {
             //throw new \Exception('Requested controller is not callable.');
         } else if (!class_exists($controller)) {

@@ -1,11 +1,11 @@
 <?php
 
-namespace \Application\Controller;
+namespace App\Controller;
 
 class Site
 {
     public function actionIndex()
     {
-        echo 123;
+
     }
 }

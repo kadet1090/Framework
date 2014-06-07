@@ -16,5 +16,8 @@
 			}
 		}
 	},
-	"defaultRequest": "site/index"
+    "dispatcher": {
+
+    },
+    "defaultRequest": "site/index"
 }
