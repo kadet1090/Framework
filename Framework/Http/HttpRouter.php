@@ -31,8 +31,20 @@ class HttpRouter implements RouterInterface
 
     public function __construct($config = null)
     {
-        if ($config != null) {
-            foreach ($config as $name => $route) {
+        if ($config == null) {
+            return;
+        }
+
+        if (isset($config['http']['separator'])) {
+            $this->separator = $config['http']['separator'];
+        }
+
+        if (isset($config['http']['extension'])) {
+            $this->separator = $config['http']['extension'];
+        }
+
+        if (isset($config['routes'])) {
+            foreach ($config['routes'] as $name => $route) {
                 if (is_array($route)) {
                     $this->addRoute($name, $route);
                 }
@@ -55,6 +67,28 @@ class HttpRouter implements RouterInterface
         foreach ($this->_routes as $route) {
             preg_match($route['regex'], $string, $matches);
 
+            $variables = isset($route['data']['variables']) ? $route['data']['variables'] : [];
+
+            array_map(
+                function ($var) {
+                    if (!is_array($var)) {
+                        return $var;
+                    }
+                    if (isset($var[$_SERVER['REQUEST_METHOD']])) {
+                        return $var[$_SERVER['REQUEST_METHOD']];
+                    }
+                    if (isset($var['default'])) {
+                        return $var['default'];
+                    }
+                    if (isset($var['get'])) {
+                        return $var['get'];
+                    }
+
+                    throw new RoutingException('This route doesn\'t support this request method');
+                },
+                $variables
+            );
+
             $parameters = array_merge(
                 $parameters,
                 array_filter_keys(
@@ -62,7 +96,8 @@ class HttpRouter implements RouterInterface
                     function ($key) {
                         return !is_int($key);
                     }
-                )
+                ),
+                $variables
             );
         }
 
@@ -93,7 +128,8 @@ class HttpRouter implements RouterInterface
      *                                  ]
      *                                  </p>
      *
-     * @throws RoutingException
+     * @throws \Framework\Exceptions\RoutingException
+     * @throws \InvalidArgumentException
      * @return void
      */
     public function addRoute($name, array $route)
@@ -110,15 +146,26 @@ class HttpRouter implements RouterInterface
                 throw new RoutingException('Route depends on nonexistent route.');
             }
 
-            $route['parameters'] = array_merge(
-                $this->_routes[$route['parent']]['data']['parameters'],
-                $route['parameters']
-            );
+            if (isset($this->_routes[$route['parent']]['data']['route'], $route['route'])) {
+                $route['route'] = array_merge(
+                    $this->_routes[$route['parent']]['data']['route'],
+                    $route['route']
+                );
+            }
 
-            $route['optional'] = array_merge(
-                $this->_routes[$route['parent']]['data']['optional'],
-                $route['optional']
-            );
+            if (isset($this->_routes[$route['parent']]['data']['parameters'], $route['parameters'])) {
+                $route['parameters'] = array_merge(
+                    $this->_routes[$route['parent']]['data']['parameters'],
+                    $route['parameters']
+                );
+            }
+
+            if (isset($this->_routes[$route['parent']]['data']['optional'], $route['optional'])) {
+                $route['optional'] = array_merge(
+                    $this->_routes[$route['parent']]['data']['optional'],
+                    $route['optional']
+                );
+            }
         }
 
         $this->_routes[$name] = [
@@ -154,6 +201,11 @@ class HttpRouter implements RouterInterface
     private function _compileRegex(array $route)
     {
         $regex = '';
+
+        if (!empty($route['route'])) {
+            $regex .= '/' . implode('/', $route['route']);
+        }
+
         if (isset($route['parameters'])) {
             foreach ($route['parameters'] as $name => $pattern) {
                 $regex .= $this->_getRegexParameter($name, $pattern);

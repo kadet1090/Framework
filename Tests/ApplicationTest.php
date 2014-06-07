@@ -13,6 +13,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        $_SERVER['REQUEST_METHOD'] = 'GET';
         $_GET['q'] = 'site/index'; // route we use.
 
         $this->_config = file_get_contents('Files/config.json', FILE_USE_INCLUDE_PATH);
@@ -23,22 +24,12 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
     public function testControllerCall()
     {
-        $controller = 'site';
-        $this->_calledController = $this->_bootstrap->callController($controller);
+        $controller              = 'App\\Controller\\Site';
+        $this->_calledController = $this->_bootstrap->controller($controller);
 
         $this->assertInstanceOf(
             'App\\Controller\\Site',
             $this->_calledController
         );
-    }
-
-    public function testControllerActionCall()
-    {
-        $action = 'actionIndex';
-        $res = $this->_bootstrap->callControllerMethod(
-            $this->_calledController,
-            $action
-        );
-        $this->assertTrue($res);
     }
 }

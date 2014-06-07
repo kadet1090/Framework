@@ -1,6 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 
-require 'C:\xampp\htdocs\Framework\vendor\autoload.php';
-
-$autoloader = new Kadet\Utils\AutoLoader('Application', 'Application/');
+$autoloader = new Kadet\Utils\AutoLoader('App', './Tests/App/');
 $autoloader->register();

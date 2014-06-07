@@ -1,21 +1,35 @@
 {
 	"router": {
-		"simple": {
-			"parameters": {
-				"controller": "string",
-				"action": "string"
-			}
-		},
-		"complex": {
-			"parameters": {
-				"controller": "string",
-				"action": "string"
-			},
-			"optional": {
-				"param1": "int"
-			}
-		}
-	},
+        "routes": {
+            "edit": {
+                "route": [
+                    "post", "add"
+                ],
+                "parameters": {
+                    "id": "int"
+                },
+                "optional": {
+                    "smth": ".*?"
+                },
+                "variables": {
+                    "controller": "App\\Controller\\Post",
+                    "action": {
+                        "get": "get_edit",
+                        "post": "post_edit"
+                    }
+                }
+            },
+            "index": {
+                "route": [
+                    "site", "index"
+                ],
+                "variables": {
+                    "controller": "App\\Controller\\Site",
+                    "action": "index"
+                }
+            }
+        }
+    },
     "dispatcher": {
 
     },

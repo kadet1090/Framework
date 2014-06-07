@@ -16,6 +16,8 @@ class Application
     public function __construct(array $config)
     {
         $this->_config = $config;
+
+        $this->_router = new HttpRouter($config);
     }
 
     /**
@@ -31,21 +33,22 @@ class Application
             $request = $router->dispatch($this->_config['defaultRequest']);
         }
 
-        $controller = ucfirst($request->controller);
         $action = 'action' . ucfirst($request->action);
 
-        $controller = $this->callController($controller);
-        $result = $this->callControllerAction($controller, $action);
+        $controller = $this->controller($request->controller);
+        $result     = $controller->{$action}($request);
     }
 
-    public function callController($controller)
+    public function controller($name)
     {
-        if (!is_callable($controller)) {
+        /*if (!is_callable($controller)) {
             //throw new \Exception('Requested controller is not callable.');
-        } else if (!class_exists($controller)) {
+        } else */
+        if (!class_exists($name)) {
             throw new \Exception('Requested controller does not exist.');
         }
-        $c = new $controller();
+
+        return new $name();
     }
 
     // when we finally write Controller class 
