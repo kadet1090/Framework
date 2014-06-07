@@ -2,7 +2,9 @@
 
 namespace Framework;
 
-class Bootstrap
+use Framework\Http\HttpRouter;
+
+class Application
 {
     private $_config;
 
@@ -21,7 +23,7 @@ class Bootstrap
      */
     public function init()
     {
-        $router = new \Framework\Http\HttpRouter($this->_config['router']);
+        $router = new HttpRouter($this->_config['router']);
 
         if (isset($_GET['q'])) {
             $request = $router->dispatch($_GET['q']);

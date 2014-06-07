@@ -2,7 +2,10 @@
 
 namespace Framework\Tests;
 
-class BootstrapTest extends \PHPUnit_Framework_TestCase
+use Application\Controller\Site;
+use Framework\Application;
+
+class ApplicationTest extends \PHPUnit_Framework_TestCase
 {
     private $_config;
     private $_bootstrap;
@@ -11,8 +14,10 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $_GET['q'] = 'site/index'; // route we use.
+
         $this->_config = file_get_contents('Files/config.json', FILE_USE_INCLUDE_PATH);
-        $this->_bootstrap = new \Framework\Bootstrap(json_decode($this->_config, true));
+
+        $this->_bootstrap = new Application(json_decode($this->_config, true));
         $this->_bootstrap->init();
     }
 
@@ -20,9 +25,10 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
     {
         $controller = 'site';
         $this->_calledController = $this->_bootstrap->callController($controller);
-        $this->assertTrue(
-             $this->_calledController
-             instanceof \Application\Controller\Site
+
+        $this->assertInstanceOf(
+            'App\\Controller\\Site',
+            $this->_calledController
         );
     }
 
@@ -30,8 +36,8 @@ class BootstrapTest extends \PHPUnit_Framework_TestCase
     {
         $action = 'actionIndex';
         $res = $this->_bootstrap->callControllerMethod(
-                                $this->_calledController,
-                                    $action
+            $this->_calledController,
+            $action
         );
         $this->assertTrue($res);
     }
