@@ -2,7 +2,6 @@
 
 namespace Framework\Tests;
 
-use Application\Controller\Site;
 use Framework\Application;
 
 class ApplicationTest extends \PHPUnit_Framework_TestCase
