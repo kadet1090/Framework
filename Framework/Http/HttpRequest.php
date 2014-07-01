@@ -4,7 +4,7 @@ namespace Framework\Http;
 
 use Framework\Data\Request;
 
-class HttpRequest extends \Framework\Data\Request
+class HttpRequest extends Request
 {
 
 

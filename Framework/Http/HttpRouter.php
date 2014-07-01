@@ -1,4 +1,5 @@
 <?php
+
 namespace Framework\Http;
 
 use Framework\Exceptions\RoutingException;
@@ -61,7 +62,7 @@ class HttpRouter implements RouterInterface
      */
     public function dispatch($string)
     {
-        $input      = $_POST;
+        $input = $_POST;
         $parameters = [];
 
         foreach ($this->_routes as $route) {
@@ -109,8 +110,8 @@ class HttpRouter implements RouterInterface
     /**
      * Add new route
      *
-     * @param string $name              Route name.
-     * @param array  $route             Route data. <p>
+     * @param string $name Route name.
+     * @param array $route Route data. <p>
      *                                  [
      *                                  'parameters' => [
      *                                  'first'  => 'string',
@@ -169,7 +170,7 @@ class HttpRouter implements RouterInterface
         }
 
         $this->_routes[$name] = [
-            'data'  => $route,
+            'data' => $route,
             'regex' => $this->_compileRegex($route),
         ];
     }
@@ -177,7 +178,7 @@ class HttpRouter implements RouterInterface
     /**
      * Check if request matches specified route.
      *
-     * @param string $route   Route to match.
+     * @param string $route Route to match.
      * @param string $request Request string.
      *
      * @return bool If true $request matches given route, else false.
@@ -234,7 +235,7 @@ class HttpRouter implements RouterInterface
     /**
      * Gets regex for specified parameter.
      *
-     * @param string $name    Parameters' name
+     * @param string $name Parameters' name
      * @param string $pattern Parameters' pattern/type (int is [0-9]+, string [a-zA-Z0-9\-\_\+]+ etc.)
      *
      * @return string

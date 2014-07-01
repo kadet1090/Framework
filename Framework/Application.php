@@ -36,26 +36,15 @@ class Application
         $action = 'action' . ucfirst($request->action);
 
         $controller = $this->controller($request->controller);
-        $result     = $controller->{$action}($request);
+        $result     = $controller->run($action, $request);
     }
 
     public function controller($name)
     {
-        /*if (!is_callable($controller)) {
-            //throw new \Exception('Requested controller is not callable.');
-        } else */
         if (!class_exists($name)) {
             throw new \Exception('Requested controller does not exist.');
         }
 
         return new $name();
     }
-
-    // when we finally write Controller class 
-    // it's instance will be required here as ...(Controller $controller)
-    public function callControllerAction($controller, $action)
-    {
-        return $controller->{$action}();
-    }
-
 }
