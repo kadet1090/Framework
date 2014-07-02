@@ -13,7 +13,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $_SERVER['REQUEST_METHOD'] = 'GET';
-        $_GET['q'] = 'site/index'; // route we use.
+        $_GET['q']                 = 'site/index'; // route we use.
 
         $this->_config = file_get_contents('Files/config.json', FILE_USE_INCLUDE_PATH);
 

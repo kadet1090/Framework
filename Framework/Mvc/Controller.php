@@ -40,7 +40,7 @@ class Controller
         }
 
         $this->beforeAction();
-        $this->action($request);
+        $this->{$action}($request);
         $this->afterAction();
     }
 } 
