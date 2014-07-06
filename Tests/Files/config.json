@@ -1,4 +1,8 @@
 {
+    "applicationNamespace": "App",
+    "defaultRequest": "site/index",
+    "viewsPath": "C:/xampp/htdocs/Framework/Tests/App/View",
+
 	"router": {
         "routes": {
             "edit": {
@@ -32,6 +36,5 @@
     },
     "dispatcher": {
 
-    },
-    "defaultRequest": "site/index"
+    }
 }
