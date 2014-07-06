@@ -18,7 +18,7 @@ class Controller
     }
 
     /**
-     * This method is executed before action.
+     * This method is executed after action.
      * You can overwrite it.
      */
     public function afterAction()
