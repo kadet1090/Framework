@@ -1,10 +1,9 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "25d0745c2e98f9ea2330489eedb897ea",
+    "hash": "da9185afe56653180893c0ea7d69319d",
     "packages": [
         {
             "name": "kadet/utils",
@@ -54,6 +53,39 @@
                 "utils"
             ],
             "time": "2014-06-02 19:50:29"
+        },
+        {
+            "name": "winek/file-resolver",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/winek/FileResolver.git",
+                "reference": "2f16355169303663ca402184b1c5d5fa671af1b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/winek/FileResolver/zipball/2f16355169303663ca402184b1c5d5fa671af1b1",
+                "reference": "2f16355169303663ca402184b1c5d5fa671af1b1",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Winek\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olgierd Grzyb",
+                    "email": "olgierd.grzyb@gmail.com"
+                }
+            ],
+            "description": "Cascading file system implementation",
+            "time": "2014-04-22 00:23:41"
         }
     ],
     "packages-dev": [

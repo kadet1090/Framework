@@ -6,7 +6,7 @@ use Framework\Http\HttpRouter;
 
 class Application
 {
-    private $_config;
+    public $config;
 
     /**
      * @var Application $app An application object
@@ -20,9 +20,10 @@ class Application
      */
     public function __construct(array $config)
     {
-        $this->_config = $config;
         $this->_router = new HttpRouter($config);
-        self::$app = $this;
+
+        $this->config = $config;
+        self::$app    = $this;
     }
 
     /**
@@ -30,12 +31,12 @@ class Application
      */
     public function init()
     {
-        $router = new HttpRouter($this->_config['router']);
+        $router = new HttpRouter($this->config['router']);
 
         if (isset($_GET['q'])) {
             $request = $router->dispatch($_GET['q']);
         } else {
-            $request = $router->dispatch($this->_config['defaultRequest']);
+            $request = $router->dispatch($this->config['defaultRequest']);
         }
 
         $action = 'action' . ucfirst($request->action);
@@ -48,6 +49,7 @@ class Application
      * Creates application's controller object specified by route
      *
      * @param string $name Controller name
+     *
      * @return mixed $name Application's controller object
      * @throws \Exception
      */
@@ -58,19 +60,5 @@ class Application
         }
 
         return new $name();
-    }
-
-    /**
-     * @param string $name Name of config to get
-     * @return mixed
-     * @throws \Exception
-     */
-    public function getConfig($name)
-    {
-        if (!array_key_exists($name, $this->_config)) {
-            throw new \Exception('There is no configuration for ' . $name . '.');
-        }
-
-        return $this->_config[$name];
     }
 }

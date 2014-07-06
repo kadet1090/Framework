@@ -1,6 +1,7 @@
 {
     "require": {
-        "kadet/utils": ">=1.2.0"
+        "kadet/utils": ">=1.2.0",
+        "winek/file-resolver": ">=0.1.0"
     },
     "autoload": {
         "psr-4": {

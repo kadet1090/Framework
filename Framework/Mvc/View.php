@@ -14,7 +14,7 @@ abstract class View
     /**
      * @param string $template Template name, using '/' separator.
      */
-    public abstract function __construct($template);
+    public abstract function __construct($template, $config, $dirs = []);
 
     public abstract function __set($var, $name);
 
