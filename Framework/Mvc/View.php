@@ -13,6 +13,8 @@ abstract class View
 
     /**
      * @param string $template Template name, using '/' separator.
+     * @param array $config View config
+     * @param array $dirs Cascade directories
      */
     public abstract function __construct($template, $config, $dirs = []);
 

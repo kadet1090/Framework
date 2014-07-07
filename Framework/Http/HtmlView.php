@@ -21,7 +21,8 @@ class HtmlView extends View
 
     /**
      * @param string $template Template name, using '/' separator, eg. site/index
-     *
+     * @param array $config View config
+     * @param array $dirs Cascade directories
      * @throws \RuntimeException When template file not found
      */
     public function __construct($template, $config, $dirs = [])

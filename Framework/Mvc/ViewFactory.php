@@ -19,7 +19,7 @@ class ViewFactory
         if (!is_string($class)) {
             throw new \Exception('Class name to produce must be a string');
         }
-        if (is_subclass_of($class, '\\Framework\\Mvc\\View')) {
+        if (!is_subclass_of($class, '\\Framework\\Mvc\\View')) {
             throw new \Exception('Class ' . $class . ' does not extend View class');
         }
         $this->_className = $class;
@@ -35,6 +35,7 @@ class ViewFactory
      */
     public function create($template, $dirs = [])
     {
-        return new $this->_className($template, $this->_config, $dirs);
+        $className = $this->_className;
+        return new $className($template, $this->_config, $dirs);
     }
 } 

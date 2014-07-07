@@ -21,7 +21,7 @@ class HtmlViewTest extends \PHPUnit_Framework_TestCase
         $view->render();
     }
 
-    public function testCascadeLoding()
+    public function testCascadeLoading()
     {
         $view = new HtmlView('site/index', Application::$app->config, ['./Tests/App/Cascade']);
         $this->assertEquals(
