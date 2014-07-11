@@ -14,24 +14,24 @@
 namespace Framework\Model;
 
 
-class DataBaseModel
+trait DataBaseModel
 {
     /**
      * @var \PDO[]
      */
-    protected static $connections = [];
+    private static $connections = [];
 
     /**
      * @var \PDO
      */
     protected $connection;
 
-    public function init($config, $id = 'database')
+    public function initDataBase($config, $id = 'database')
     {
         $this->connection = self::getConnection($config['model']['database']);
     }
 
-    protected static function getConnection($config)
+    private static function getConnection($config)
     {
         $cid = md5(serialize($config));
 
