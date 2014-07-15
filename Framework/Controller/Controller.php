@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Mvc;
+namespace Framework\Controller;
 
-use \Framework\Exceptions\HttpException;
+use Framework\Exceptions\HttpException;
 
 class Controller
 {
