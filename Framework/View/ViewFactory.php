@@ -19,7 +19,7 @@ class ViewFactory
         if (!is_string($class)) {
             throw new \Exception('Class name to produce must be a string');
         }
-        if (!is_subclass_of($class, '\\Framework\\Mvc\\View')) {
+        if (!is_subclass_of($class, '\\Framework\\View\\View')) {
             throw new \Exception('Class ' . $class . ' does not extend View class');
         }
         $this->_className = $class;

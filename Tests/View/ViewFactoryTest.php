@@ -2,7 +2,7 @@
 
 namespace Framework\Tests;
 
-use Framework\Mvc\ViewFactory;
+use Framework\View\ViewFactory;
 
 class ViewFactoryTest extends \PHPUnit_Framework_TestCase
 {

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Framework\Mvc\Controller;
+use Framework\Controller\Controller;
 
 class Site extends Controller
 {

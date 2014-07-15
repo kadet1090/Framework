@@ -2,7 +2,7 @@
 
 namespace Framework\Http;
 
-use Framework\Mvc\View;
+use Framework\View\View;
 use Winek\FileResolver;
 
 class HtmlView extends View
