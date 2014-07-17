@@ -16,7 +16,7 @@ class Application
     /**
      * Class constructor.
      *
-     * @param array $config Application configuration file in JSON format
+     * @param array $config Application configuration file
      */
     public function __construct(array $config)
     {
