@@ -12,6 +12,9 @@ use Framework\ErrorException;
  */
 class ErrorHandler
 {
+    /**
+     * @var bool $discardExistingOutput determines if output before error display should be erased
+     */
     public $discardExistingOutput = true;
 
     /**
@@ -26,7 +29,7 @@ class ErrorHandler
     }
 
     /**
-     * Handler for uncaught PHP exceptions
+     * Handles uncaught PHP exceptions
      *
      * @param $exception \Exception
      */
@@ -42,7 +45,7 @@ class ErrorHandler
     }
 
     /**
-     * Handler for PHP runtime errors.
+     * Handles PHP runtime errors.
      *
      * @param $code
      * @param $message
@@ -57,6 +60,9 @@ class ErrorHandler
         }
     }
 
+    /**
+     * Handles fatal errors
+     */
     public function handleFatalError()
     {
         $error = error_get_last();
@@ -80,7 +86,7 @@ class ErrorHandler
     }
 
     /**
-     * This method renders exception
+     * Renders exception
      *
      * @param $exception \Exception
      */

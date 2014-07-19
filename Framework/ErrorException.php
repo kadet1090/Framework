@@ -2,8 +2,17 @@
 
 namespace Framework;
 
+/**
+ * Class ErrorException
+ * This class extends \ErrorException to provide way to handle fatal errors
+ *
+ * @package Framework
+ */
 class ErrorException extends \ErrorException
 {
+    /**
+     * @var array $fatalErrors Array of error types which are considered as fatal errors.
+     */
     protected static $fatalErrors = [
         E_ERROR,
         E_PARSE,
