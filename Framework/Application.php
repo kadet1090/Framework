@@ -2,11 +2,13 @@
 
 namespace Framework;
 
+use Framework\ErrorHandler;
 use Framework\Http\HttpRouter;
 
 class Application
 {
     public $config;
+    public $frameworkPath;
 
     /**
      * @var Application $app An application object
@@ -20,10 +22,12 @@ class Application
      */
     public function __construct(array $config)
     {
-        $this->_router = new HttpRouter($config);
+        $errorHandler = new ErrorHandler();
+        $errorHandler->register();
 
-        $this->config = $config;
-        self::$app    = $this;
+        $this->frameworkPath = __DIR__;
+        $this->config        = $config;
+        self::$app           = $this;
     }
 
     /**
@@ -32,16 +36,15 @@ class Application
     public function init()
     {
         $router = new HttpRouter($this->config['router']);
-
         if (isset($_GET['q'])) {
             $request = $router->dispatch($_GET['q']);
         } else {
             $request = $router->dispatch($this->config['defaultRequest']);
         }
 
-        $action = 'action' . ucfirst($request->action);
-
+        $action     = 'action' . ucfirst($request->action);
         $controller = $this->controller($request->controller);
+
         $controller->run($action, $request);
     }
 
