@@ -2,9 +2,6 @@
 
 namespace Framework;
 
-use Framework\View\ViewFactory;
-use Framework\ErrorException;
-
 /**
  * Class ErrorHandler handles uncaught PHP errors and exceptions
  *
@@ -92,8 +89,7 @@ class ErrorHandler
      */
     public function renderException($exception)
     {
-        $factory = new ViewFactory('\\Framework\\Http\\HtmlView', []);
-        $view    = $factory->create('exception', [App::$app->frameworkPath . '/views']);
+        $view = App::$app->viewFactory->create('exception', [App::$app->frameworkPath . '/views']);
 
         $view->className = get_class($exception);
         $view->message   = $exception->getMessage();

@@ -2,13 +2,28 @@
 
 namespace Framework;
 
-use Framework\ErrorHandler;
 use Framework\Http\HttpRouter;
+use Framework\View\ViewFactory;
 
 class Application
 {
+    /**
+     * Application main config.
+     * @var array
+     */
     public $config;
+
+    /**
+     * Path to Framework.
+     * @var string
+     */
     public $frameworkPath;
+
+    /**
+     * Main factory for creating apps views.
+     * @var View\ViewFactory
+     */
+    public $viewFactory;
 
     /**
      * @var Application $app An application object
@@ -27,6 +42,7 @@ class Application
 
         $this->frameworkPath = __DIR__;
         $this->config        = $config;
+        $this->viewFactory   = new ViewFactory('\\Framework\\Http\\HtmlView', $config); // todo: ViewClass from SAPI or config
         self::$app           = $this;
     }
 
